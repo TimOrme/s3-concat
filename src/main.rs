@@ -35,7 +35,7 @@ fn main() -> types::ConcatResult<()> {
     let mut splitn = args
         .value_of("bucket")
         .unwrap()
-        .trim_left_matches("s3://")
+        .trim_start_matches("s3://")
         .splitn(2, '/');
 
     // bucket is required, prefix is optional after `/`
@@ -44,7 +44,7 @@ fn main() -> types::ConcatResult<()> {
         splitn
             .next()
             .unwrap_or("")
-            .trim_right_matches('/')
+            .trim_end_matches('/')
             .to_string(),
     );
 
